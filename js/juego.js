@@ -8,6 +8,7 @@ var balas = [];
 var n_balas = 0;
 const n_marcianos = 900; //Es el intervalo sobre el cual se generan. No es el número de marcianos.
 var movimiento_vertical = 20;
+var puntaje = 0;
 
 /************************* C A R G U E ***********************************************/
 window.onload = function()
@@ -34,7 +35,7 @@ function izquierda()
     var tanque = document.getElementById( "tanque" );
     tanque_x -= 10;
     tanque.style.left = tanque_x + "px";
-    console.log( "Izquierda" );
+    //console.log( "Izquierda" );
 }
 
 
@@ -43,13 +44,13 @@ function derecha()
     var tanque = document.getElementById( "tanque" );
     tanque_x += 10;
     tanque.style.left = tanque_x + "px";
-    console.log( "Derecha" );
+    //console.log( "Derecha" );
 }
 
 function disparar()
 {
     //contenedor_juego
-    console.log( "Disparo" );
+    //console.log( "Disparo" );
 
     balas.push( [ tanque_x, 450, "bala" + n_balas, 1 ] );
 
@@ -70,7 +71,7 @@ function mover_bala()
     //Hay balas en el juego.
     if( balas.length > 0 )
     {
-        console.log( ":::::::::" );
+        //console.log( ":::::::::" );
         
         for( var i = 0; i < balas.length; i ++ )
         {
@@ -122,6 +123,7 @@ function mover_marcianitos()
 
 function comprobacion_colision()
 {
+    var texto_puntaje = document.getElementById( "texto-puntaje" );
     var txt_bala = "";
 
     //Ciclo marcianos
@@ -141,6 +143,9 @@ function comprobacion_colision()
                         document.getElementById( "m" + i ).style.visibility  = "hidden";
                         balas[ j ][ 3 ] = 0;
                         document.getElementById( balas[ j ][ 2 ] ).style.visibility = "hidden";
+                        puntaje ++;
+                        //console.log( puntaje );
+                        texto_puntaje.value = puntaje;   
                         //Puntaje.
                     }
                 }
@@ -150,7 +155,7 @@ function comprobacion_colision()
     }
 
     //for( var i = 0; i <= n_marcianos; i = i + 20 )
-    console.log( "-> " + marcianos_left );
+    //console.log( "-> " + marcianos_left );
 
     /*txt_bala += "<div style='position: absolute; left: " + balas[ 0 ][ 0 ] + "px;"; 
     txt_bala += " top: " + balas[ 0 ][ 1 ] + "px; border: 1px solid; ";

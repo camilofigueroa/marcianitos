@@ -28,3 +28,9 @@ body
 {
     position: absolute;
 }
+
+#formulario-puntaje
+{
+    position: absolute;
+    top: 600px;
+}
